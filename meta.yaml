@@ -1,0 +1,21 @@
+{% set name = "foo" %}
+{% set version = "0.5" %}
+
+package:
+  name: "{{ name|lower }}"
+  version: "{{ version }}"
+
+source:
+  path: ./src
+
+requirements:
+  build:
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
+    - cmake
+    - make # [linux]
+  host:
+    - pip
+    - python
+  run:
+    - python
